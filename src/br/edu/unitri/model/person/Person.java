@@ -73,7 +73,6 @@ public abstract class Person implements Serializable {
 
 	public Person() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Person(long id, String name, Date burnDate, String rg, String cpf,

@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import br.edu.unitri.enumerators.TipoLevelStudent;
+import br.edu.unitri.model.history.StudentHistory;
 import br.edu.unitri.model.user.User;
 
 /**
@@ -24,6 +26,10 @@ public class Student extends Person implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private TipoLevelStudent tipoLevelStudent;
+
+	private StudentHistory history;
 
 	public Student() {
 		super();
@@ -48,6 +54,28 @@ public class Student extends Person implements Serializable {
 	public Student(String name, Date burnDate, String rg, String cpf,
 			String email, User user) {
 		super(name, burnDate, rg, cpf, email, user);
+	}
+
+	public Student(TipoLevelStudent tipoLevelStudent, StudentHistory history) {
+		super();
+		this.tipoLevelStudent = tipoLevelStudent;
+		this.history = history;
+	}
+
+	public TipoLevelStudent getTipoLevelStudent() {
+		return tipoLevelStudent;
+	}
+
+	public void setTipoLevelStudent(TipoLevelStudent tipoLevelStudent) {
+		this.tipoLevelStudent = tipoLevelStudent;
+	}
+
+	public StudentHistory getHistory() {
+		return history;
+	}
+
+	public void setHistory(StudentHistory history) {
+		this.history = history;
 	}
 
 }

@@ -18,6 +18,13 @@
 		<class>br.edu.unitri.model.person.Teacher</class>
 		<class>br.edu.unitri.model.person.TeacherResume</class>
 		
+		<class>br.edu.unitri.model.Content.Content</class>
+		<class>br.edu.unitri.model.Content.Course</class>
+		<class>br.edu.unitri.model.Content.Template</class>
+		<class>br.edu.unitri.model.Content.ContentSession</class>
+		
+		<class>br.edu.unitri.model.history.StudentHistory</class>
+		
 		<class>br.edu.unitri.model.user.Role</class>
 		<class>br.edu.unitri.model.user.User</class>
 		<properties>
