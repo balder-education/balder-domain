@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.unitri.model.history.PersonFeedback;
 import br.edu.unitri.model.user.User;
 
 /**
@@ -71,14 +72,17 @@ public abstract class Person implements Serializable {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "feedback_id", referencedColumnName = "id")
+	private PersonFeedback feedback;
+
 	public Person() {
 		super();
 	}
 
-	public Person(long id, String name, Date burnDate, String rg, String cpf,
-			String email, Collection<Endereco> listaEnderecos,
-			Collection<Contato> listaContatos,
-			Collection<Occupation> listaOcupacao, User user) {
+	public Person(long id, String name, Date burnDate, String rg, String cpf, String email,
+			Collection<Endereco> listaEnderecos, Collection<Contato> listaContatos,
+			Collection<Occupation> listaOcupacao, User user, PersonFeedback feedback) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -90,12 +94,12 @@ public abstract class Person implements Serializable {
 		this.listaContatos = listaContatos;
 		this.listaOcupacao = listaOcupacao;
 		this.user = user;
+		this.feedback = feedback;
 	}
 
-	public Person(String name, Date burnDate, String rg, String cpf,
-			String email, Collection<Endereco> listaEnderecos,
-			Collection<Contato> listaContatos,
-			Collection<Occupation> listaOcupacao, User user) {
+	public Person(String name, Date burnDate, String rg, String cpf, String email, Collection<Endereco> listaEnderecos,
+			Collection<Contato> listaContatos, Collection<Occupation> listaOcupacao, User user,
+			PersonFeedback feedback) {
 		super();
 		this.name = name;
 		this.burnDate = burnDate;
@@ -106,10 +110,10 @@ public abstract class Person implements Serializable {
 		this.listaContatos = listaContatos;
 		this.listaOcupacao = listaOcupacao;
 		this.user = user;
+		this.feedback = feedback;
 	}
 
-	public Person(String name, Date burnDate, String rg, String cpf,
-			String email, User user) {
+	public Person(String name, Date burnDate, String rg, String cpf, String email, User user, PersonFeedback feedback) {
 		super();
 		this.name = name;
 		this.burnDate = burnDate;
@@ -117,6 +121,7 @@ public abstract class Person implements Serializable {
 		this.cpf = cpf;
 		this.email = email;
 		this.user = user;
+		this.feedback = feedback;
 	}
 
 	public long getId() {
@@ -197,6 +202,14 @@ public abstract class Person implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public PersonFeedback getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(PersonFeedback feedback) {
+		this.feedback = feedback;
 	}
 
 	@Override

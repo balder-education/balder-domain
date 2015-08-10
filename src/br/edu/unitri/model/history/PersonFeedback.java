@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package br.edu.unitri.model.history;
 
 import java.io.Serializable;
@@ -13,8 +16,8 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="tbStudentHistory")
-public class StudentHistory implements Serializable {
+@Table(name = "tbFeedback")
+public class PersonFeedback implements Serializable {
 
 	/**
 	 * 
@@ -25,16 +28,16 @@ public class StudentHistory implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String texto;
+	private String feedback;
 
-	public StudentHistory() {
+	public PersonFeedback() {
 		super();
 	}
 
-	public StudentHistory(long id, String texto) {
+	public PersonFeedback(long id, String feedback) {
 		super();
 		this.id = id;
-		this.texto = texto;
+		this.feedback = feedback;
 	}
 
 	public long getId() {
@@ -45,12 +48,12 @@ public class StudentHistory implements Serializable {
 		this.id = id;
 	}
 
-	public String getTexto() {
-		return texto;
+	public String getFeedback() {
+		return feedback;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class StudentHistory implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StudentHistory other = (StudentHistory) obj;
+		PersonFeedback other = (PersonFeedback) obj;
 		if (id != other.id)
 			return false;
 		return true;
