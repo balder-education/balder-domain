@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.history.PersonFeedback;
 import br.edu.unitri.model.user.User;
 
@@ -33,7 +34,7 @@ import br.edu.unitri.model.user.User;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tbPerson")
-public abstract class Person implements Serializable {
+public class Person implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -42,7 +43,7 @@ public abstract class Person implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(name = "name", length = 75, nullable = true)
 	private String name;
@@ -80,7 +81,7 @@ public abstract class Person implements Serializable {
 		super();
 	}
 
-	public Person(long id, String name, Date burnDate, String rg, String cpf, String email,
+	public Person(Long id, String name, Date burnDate, String rg, String cpf, String email,
 			Collection<Endereco> listaEnderecos, Collection<Contato> listaContatos,
 			Collection<Occupation> listaOcupacao, User user, PersonFeedback feedback) {
 		super();
@@ -124,11 +125,11 @@ public abstract class Person implements Serializable {
 		this.feedback = feedback;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -11,13 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name = "tbFeedback")
-public class PersonFeedback implements Serializable {
+public class PersonFeedback implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -26,7 +28,7 @@ public class PersonFeedback implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String feedback;
 
@@ -34,17 +36,17 @@ public class PersonFeedback implements Serializable {
 		super();
 	}
 
-	public PersonFeedback(long id, String feedback) {
+	public PersonFeedback(Long id, String feedback) {
 		super();
 		this.id = id;
 		this.feedback = feedback;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

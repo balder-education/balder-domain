@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.person.Student;
 
 /**
@@ -22,7 +23,7 @@ import br.edu.unitri.model.person.Student;
  */
 @Entity
 @Table(name = "tbContentScore")
-public class ContentScore implements Serializable {
+public class ContentScore implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -31,7 +32,7 @@ public class ContentScore implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "student_id", referencedColumnName = "id")
@@ -41,14 +42,14 @@ public class ContentScore implements Serializable {
 	@JoinColumn(name = "content_id", referencedColumnName = "id")
 	private Content content;
 
-	private boolean status;
+	private Boolean status;
 	private int score;
 
 	public ContentScore() {
 		super();
 	}
 
-	public ContentScore(long id, Student student, Content content, boolean status, int score) {
+	public ContentScore(Long id, Student student, Content content, Boolean status, int score) {
 		super();
 		this.id = id;
 		this.student = student;
@@ -57,7 +58,7 @@ public class ContentScore implements Serializable {
 		this.score = score;
 	}
 
-	public ContentScore(Student student, Content content, boolean status, int score) {
+	public ContentScore(Student student, Content content, Boolean status, int score) {
 		super();
 		this.student = student;
 		this.content = content;
@@ -65,11 +66,11 @@ public class ContentScore implements Serializable {
 		this.score = score;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -89,11 +90,11 @@ public class ContentScore implements Serializable {
 		this.content = content;
 	}
 
-	public boolean isStatus() {
+	public Boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 

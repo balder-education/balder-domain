@@ -15,13 +15,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name = "tbState")
-public class State implements Serializable {
+public class State implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -30,8 +32,8 @@ public class State implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "country_id", referencedColumnName = "id")
 	private Country country;
@@ -41,15 +43,15 @@ public class State implements Serializable {
 
 	@Column(name = "description", length = 255)
 	private String description;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "state", cascade=CascadeType.REMOVE)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "state", cascade = CascadeType.REMOVE)
 	private Collection<City> listCitys;
 
 	public State() {
 		super();
 	}
 
-	public State(long id, String name, String description) {
+	public State(Long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -62,11 +64,11 @@ public class State implements Serializable {
 		this.description = description;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -84,6 +86,22 @@ public class State implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	public Collection<City> getListCitys() {
+		return listCitys;
+	}
+
+	public void setListCitys(Collection<City> listCitys) {
+		this.listCitys = listCitys;
 	}
 
 	@Override

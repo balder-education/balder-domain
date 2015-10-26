@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.unitri.enumerators.TipoUsuario;
+import br.edu.unitri.interfaces.SimpleEntity;
 
 /**
  * @author marcos.fernando
@@ -25,7 +26,7 @@ import br.edu.unitri.enumerators.TipoUsuario;
  */
 @Entity
 @Table(name = "tbUser")
-public class User implements Serializable {
+public class User implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -34,7 +35,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
@@ -54,7 +55,7 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(long id, Role role, String userName, String password,
+	public User(Long id, Role role, String userName, String password,
 			TipoUsuario tipoUsuario) {
 		super();
 		this.id = id;
@@ -73,11 +74,11 @@ public class User implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

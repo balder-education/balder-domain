@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.edu.unitri.enumerators.TipoContato;
+import br.edu.unitri.interfaces.SimpleEntity;
 
 /**
  * @author marcos.fernando
@@ -25,7 +26,7 @@ import br.edu.unitri.enumerators.TipoContato;
  */
 @Entity
 @Table(name = "tbContato")
-public class Contato implements Serializable {
+public class Contato implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -34,8 +35,8 @@ public class Contato implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "person_id", referencedColumnName = "id")
 	private Person person;
@@ -50,7 +51,7 @@ public class Contato implements Serializable {
 		super();
 	}
 
-	public Contato(long id, TipoContato tipoContato, String description) {
+	public Contato(Long id, TipoContato tipoContato, String description) {
 		super();
 		this.id = id;
 		this.tipoContato = tipoContato;
@@ -63,11 +64,11 @@ public class Contato implements Serializable {
 		this.description = description;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,6 +86,14 @@ public class Contato implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	@Override

@@ -16,13 +16,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name = "tbCountry")
-public class Country implements Serializable {
+public class Country implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -31,7 +33,7 @@ public class Country implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(name = "name", length = 60)
 	private String name;
@@ -46,7 +48,7 @@ public class Country implements Serializable {
 		super();
 	}
 
-	public Country(long id, String name, String description) {
+	public Country(Long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -59,11 +61,11 @@ public class Country implements Serializable {
 		this.description = description;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

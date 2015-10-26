@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.person.Student;
 import br.edu.unitri.model.person.Teacher;
 
@@ -28,7 +29,7 @@ import br.edu.unitri.model.person.Teacher;
  */
 @Entity
 @Table(name = "tbCourse")
-public class Course implements Serializable {
+public class Course implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -37,7 +38,7 @@ public class Course implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String description;
 
@@ -63,7 +64,7 @@ public class Course implements Serializable {
 		super();
 	}
 
-	public Course(long id, String description, Date initialDate, Date endDate,
+	public Course(Long id, String description, Date initialDate, Date endDate,
 			Teacher teacher, Collection<Student> listStudent,
 			Collection<Content> listContents) {
 		super();
@@ -97,11 +98,11 @@ public class Course implements Serializable {
 		this.teacher = teacher;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

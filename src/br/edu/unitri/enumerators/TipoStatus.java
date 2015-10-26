@@ -7,14 +7,14 @@ package br.edu.unitri.enumerators;
  * @author marcos.fernando
  *
  */
-public enum TipoLevelStudent {
+public enum TipoStatus {
 	
-	INICIANTE("01","Iniciante"), INTERMEDIARIO("02","Intermediario"), ADVANCED("03","Advanced"), EXTREME("04","Extremo");
+	ATIVO("01","Ativo"), INATIVO("02","Inativo"), SUSPENSO("03","Suspenso"), OUTROS("04","Outros");
 	
 	private final String tipo;
 	private final String descricao;
 
-	TipoLevelStudent(String tipo, String descricao) {
+	TipoStatus(String tipo, String descricao) {
 		this.tipo = tipo;
 		this.descricao = descricao;
 	}

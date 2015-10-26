@@ -13,10 +13,11 @@
 		<class>br.edu.unitri.model.person.Contato</class>
 		<class>br.edu.unitri.model.person.Occupation</class>
 		<class>br.edu.unitri.model.person.Person</class>
-		<class>br.edu.unitri.model.person.Manager</class>
+		<class>br.edu.unitri.model.person.Administrator</class>
 		<class>br.edu.unitri.model.person.Student</class>
 		<class>br.edu.unitri.model.person.Teacher</class>
 		<class>br.edu.unitri.model.person.TeacherResume</class>
+		<class>br.edu.unitri.model.person.Manager</class>
 		
 		<class>br.edu.unitri.model.Content.Content</class>
 		<class>br.edu.unitri.model.Content.Course</class>
@@ -24,6 +25,7 @@
 		<class>br.edu.unitri.model.Content.ContentSession</class>
 		<class>br.edu.unitri.model.Content.ContentScore</class>
 		<class>br.edu.unitri.model.Content.ContentLog</class>
+		<class>br.edu.unitri.model.Content.Arquivo</class>
 		
 		<class>br.edu.unitri.model.history.StudentHistory</class>
 		<class>br.edu.unitri.model.history.PersonFeedback</class>

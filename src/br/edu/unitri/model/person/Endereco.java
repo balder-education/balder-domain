@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.unitri.enumerators.TipoEndereco;
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.address.Address;
 
 /**
@@ -24,7 +25,7 @@ import br.edu.unitri.model.address.Address;
  */
 @Entity
 @Table(name = "tbEndereco")
-public class Endereco implements Serializable {
+public class Endereco implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -33,8 +34,8 @@ public class Endereco implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "person_id", referencedColumnName = "id")
 	private Person person;
@@ -51,7 +52,7 @@ public class Endereco implements Serializable {
 		super();
 	}
 
-	public Endereco(long id, TipoEndereco tipoEndereco, Address address) {
+	public Endereco(Long id, TipoEndereco tipoEndereco, Address address) {
 		super();
 		this.id = id;
 		this.tipoEndereco = tipoEndereco;
@@ -64,11 +65,11 @@ public class Endereco implements Serializable {
 		this.address = address;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -86,6 +87,14 @@ public class Endereco implements Serializable {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	@Override

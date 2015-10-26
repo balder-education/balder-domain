@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.person.Person;
 
 /**
@@ -22,7 +23,7 @@ import br.edu.unitri.model.person.Person;
  */
 @Entity
 @Table(name = "tbContentSession")
-public class ContentSession implements Serializable {
+public class ContentSession implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -31,7 +32,7 @@ public class ContentSession implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private Date initialTime;
 	private Date finalTime;
@@ -53,11 +54,11 @@ public class ContentSession implements Serializable {
 		this.person = person;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

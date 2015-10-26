@@ -12,13 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name = "tbRole")
-public class Role implements Serializable {
+public class Role implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -27,7 +29,7 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(name = "rolename", length = 20, nullable = true)
 	private String rolename;
@@ -39,7 +41,7 @@ public class Role implements Serializable {
 		super();
 	}
 
-	public Role(long id, String rolename, String acronym) {
+	public Role(Long id, String rolename, String acronym) {
 		super();
 		this.id = id;
 		this.rolename = rolename;
@@ -52,11 +54,11 @@ public class Role implements Serializable {
 		this.acronym = acronym;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

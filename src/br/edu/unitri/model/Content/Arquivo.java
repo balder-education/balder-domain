@@ -18,16 +18,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.unitri.enumerators.TipoConteudo;
-import br.edu.unitri.enumerators.TipoLevelContent;
-import br.edu.unitri.interfaces.SimpleEntity;
 
 /**
- * @author marcos.fernando
+ * @author MARCOS FERNANDO
  *
  */
 @Entity
-@Table(name = "tbContent")
-public class Content implements Serializable, SimpleEntity {
+@Table(name = "tbArquivos")
+public class Arquivo implements Serializable {
 
 	/**
 	 * 
@@ -38,39 +36,45 @@ public class Content implements Serializable, SimpleEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String description;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "conteudo_id", referencedColumnName = "id")
+	private Content conteudo;
 
 	@Column(name = "TPCONTEUDO")
 	@Enumerated(EnumType.STRING)
 	private TipoConteudo tipoConteudo;
 
-	@Column(name = "TPLEVCONT")
-	@Enumerated(EnumType.STRING)
-	private TipoLevelContent tipoLevel;
+	@Column(name = "IMAGEM", nullable = true)
+	private String nomeImagem;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "curso_id", referencedColumnName = "id")
-	private Course curso;
+	@Column(name = "EXTENSAO", nullable = true)
+	private String extensao;
 
-	public Content() {
+	@Column(name = "TAMANHO", nullable = true)
+	private Long tamanho;
+
+	public Arquivo() {
 		super();
 	}
 
-	public Content(Long id, String description, TipoConteudo tipoConteudo, TipoLevelContent tipoLevel, Course curso) {
+	public Arquivo(Long id, Content conteudo, TipoConteudo tipoConteudo, String nomeImagem, String extensao,
+			Long tamanho) {
 		super();
 		this.id = id;
-		this.description = description;
+		this.conteudo = conteudo;
 		this.tipoConteudo = tipoConteudo;
-		this.tipoLevel = tipoLevel;
-		this.curso = curso;
+		this.nomeImagem = nomeImagem;
+		this.extensao = extensao;
+		this.tamanho = tamanho;
 	}
 
-	public Content(String description, TipoConteudo tipoConteudo, TipoLevelContent tipoLevel, Course curso) {
+	public Arquivo(Content conteudo, TipoConteudo tipoConteudo, String nomeImagem, String extensao, Long tamanho) {
 		super();
-		this.description = description;
+		this.conteudo = conteudo;
 		this.tipoConteudo = tipoConteudo;
-		this.tipoLevel = tipoLevel;
-		this.curso = curso;
+		this.nomeImagem = nomeImagem;
+		this.extensao = extensao;
+		this.tamanho = tamanho;
 	}
 
 	public Long getId() {
@@ -81,12 +85,12 @@ public class Content implements Serializable, SimpleEntity {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public Content getConteudo() {
+		return conteudo;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setConteudo(Content conteudo) {
+		this.conteudo = conteudo;
 	}
 
 	public TipoConteudo getTipoConteudo() {
@@ -97,20 +101,28 @@ public class Content implements Serializable, SimpleEntity {
 		this.tipoConteudo = tipoConteudo;
 	}
 
-	public TipoLevelContent getTipoLevel() {
-		return tipoLevel;
+	public String getNomeImagem() {
+		return nomeImagem;
 	}
 
-	public void setTipoLevel(TipoLevelContent tipoLevel) {
-		this.tipoLevel = tipoLevel;
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
 	}
 
-	public Course getCurso() {
-		return curso;
+	public String getExtensao() {
+		return extensao;
 	}
 
-	public void setCurso(Course curso) {
-		this.curso = curso;
+	public void setExtensao(String extensao) {
+		this.extensao = extensao;
+	}
+
+	public Long getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(Long tamanho) {
+		this.tamanho = tamanho;
 	}
 
 	@Override
@@ -129,7 +141,7 @@ public class Content implements Serializable, SimpleEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Content other = (Content) obj;
+		Arquivo other = (Arquivo) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

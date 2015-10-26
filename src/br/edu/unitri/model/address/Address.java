@@ -12,13 +12,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name = "tbAddress")
-public class Address implements Serializable {
+public class Address implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -27,7 +29,7 @@ public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cep_id", referencedColumnName = "id")
@@ -38,36 +40,36 @@ public class Address implements Serializable {
 	@Column(name = "complement", length = 255)
 	private String complement;
 
-	@Column(name = "references", length = 120)
-	private String references;
+	@Column(name = "referencia", length = 120)
+	private String referencia;
 
 	public Address() {
 		super();
 	}
 
-	public Address(long id, Cep cep, int number, String complement,
-			String references) {
+	public Address(Long id, Cep cep, int number, String complement,
+			String referencia) {
 		super();
 		this.id = id;
 		this.cep = cep;
 		this.number = number;
 		this.complement = complement;
-		this.references = references;
+		this.referencia = referencia;
 	}
 
-	public Address(Cep cep, int number, String complement, String references) {
+	public Address(Cep cep, int number, String complement, String referencia) {
 		super();
 		this.cep = cep;
 		this.number = number;
 		this.complement = complement;
-		this.references = references;
+		this.referencia = referencia;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -95,12 +97,12 @@ public class Address implements Serializable {
 		this.complement = complement;
 	}
 
-	public String getReferences() {
-		return references;
+	public String getReferencia() {
+		return referencia;
 	}
 
-	public void setReferences(String references) {
-		this.references = references;
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
 	}
 
 	@Override

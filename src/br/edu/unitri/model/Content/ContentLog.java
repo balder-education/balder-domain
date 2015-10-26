@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
 import br.edu.unitri.model.person.Student;
 
 /**
@@ -22,7 +23,7 @@ import br.edu.unitri.model.person.Student;
  */
 @Entity
 @Table(name = "tbContentLog")
-public class ContentLog implements Serializable {
+public class ContentLog implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -31,7 +32,7 @@ public class ContentLog implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "student_id", referencedColumnName = "id")
@@ -47,7 +48,7 @@ public class ContentLog implements Serializable {
 		super();
 	}
 
-	public ContentLog(long id, Student student, Content content, int score) {
+	public ContentLog(Long id, Student student, Content content, int score) {
 		super();
 		this.id = id;
 		this.student = student;
@@ -62,11 +63,11 @@ public class ContentLog implements Serializable {
 		this.score = score;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

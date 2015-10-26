@@ -8,13 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.unitri.interfaces.SimpleEntity;
+
 /**
  * @author marcos.fernando
  *
  */
 @Entity
 @Table(name="tbStudentHistory")
-public class StudentHistory implements Serializable {
+public class StudentHistory implements Serializable, SimpleEntity {
 
 	/**
 	 * 
@@ -23,7 +25,7 @@ public class StudentHistory implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String texto;
 
@@ -31,17 +33,17 @@ public class StudentHistory implements Serializable {
 		super();
 	}
 
-	public StudentHistory(long id, String texto) {
+	public StudentHistory(Long id, String texto) {
 		super();
 		this.id = id;
 		this.texto = texto;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
